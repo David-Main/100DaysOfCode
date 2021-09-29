@@ -1,9 +1,11 @@
 # Day08
-Today I built a file reader which prints out the   
-contents of a file in hexadecimal format as well as   
+
+Today I built a file reader which prints out the  
+contents of a file in hexadecimal format as well as  
 the actual contents to the console.
 
 ## The code
+
 ```cpp
 #include <iostream>
 #include <sstream>
@@ -31,7 +33,7 @@ int read16(ifstream& stm)
 	cout << hex;
 	string line;
 
-	//print bytes 
+	//print bytes
 	for (int i = 0; i < block_length; ++i)
 	{
 		//read a single character from the stream
@@ -42,7 +44,7 @@ int read16(ifstream& stm)
 		}
 		//need to make sure that all hex are printed
 		//two character padded with zeros
-		if(i < (block_length/3)) 
+		if(i < (block_length/3))
 		{
 			cout << setw(2) << setfill('0');
 			cout << static_cast<short>(c) << " ";
@@ -88,7 +90,7 @@ int main(int argc, char* argv[])
 		ss >> blocks;
 		if (ss.fail() || 0 >= blocks)
 		{
-			//cannot convert to a number 
+			//cannot convert to a number
 			usage("second parameter: must be a number," " and greater than zero");
 			return 1;
 
@@ -104,7 +106,7 @@ int main(int argc, char* argv[])
 
 	while (blocks-- && read16(file) != -1);
 	file.close();
-  
+
 	return 0;
 }
 ```
